@@ -16,7 +16,7 @@ export default {
   props: ["post"],
   setup(props) {
     let cutPostBody = computed(() => {
-      return props.post.body.substring(0, 100);
+      return props.post.body.substring(0, 20);
     });
     return {
       cutPostBody,
