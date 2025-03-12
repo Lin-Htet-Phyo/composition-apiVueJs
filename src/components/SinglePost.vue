@@ -1,5 +1,7 @@
 <template>
+  <router-link :to="{name:'Detail', params:{id:post.id}}">
   <h1>{{ post.title }}</h1>
+  </router-link>
   <p>{{ cutPostBody }}</p>
 </template>
 
