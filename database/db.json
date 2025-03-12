@@ -3,17 +3,17 @@
     {
       "title": "post title 1",
       "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet magnam explicabo iste fugit ratione fuga et quia velit numquam maiores laboriosam doloribus atque voluptatem debitis aliquid cumque, consequatur recusandae earum? Ullam maiores provident ut distinctio necessitatibus aspernatur tempora accusamus deserunt unde voluptatem ducimus quae eius, impedit atque obcaecati sit rerum similique? Ad rerum suscipit dignissimos necessitatibus perferendis, officia iure ea! Possimus, enim. Expedita atque cum, ratione corporis error accusantium. At est consequuntur nulla corporis dolores cumque officia consequatur quasi aut veniam? Dolorem, veritatis. Corporis in molestias eum iure laborum, sit unde libero consequatur praesentium? Blanditiis corrupti perferendis necessitatibus officiis porro.",
-      "id": 1
+      "id": "1"
     },
     {
       "title": "post title 2",
       "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet magnam explicabo iste fugit ratione fuga et quia velit numquam maiores laboriosam doloribus atque voluptatem debitis aliquid cumque, consequatur recusandae earum? Ullam maiores provident ut distinctio necessitatibus aspernatur tempora accusamus deserunt unde voluptatem ducimus quae eius, impedit atque obcaecati sit rerum similique? Ad rerum suscipit dignissimos necessitatibus perferendis, officia iure ea! Possimus, enim. Expedita atque cum, ratione corporis error accusantium. At est consequuntur nulla corporis dolores cumque officia consequatur quasi aut veniam? Dolorem, veritatis. Corporis in molestias eum iure laborum, sit unde libero consequatur praesentium? Blanditiis corrupti perferendis necessitatibus officiis porro.",
-      "id": 2
+      "id": "2"
     },
     {
       "title": "post title 3",
       "body": "lorem ipsum 3",
-      "id": 3
+      "id": "3"
     },
     {
       "id": "d850",
