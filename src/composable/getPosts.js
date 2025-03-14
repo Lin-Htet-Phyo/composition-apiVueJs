@@ -1,5 +1,5 @@
 import { computed, reactive, ref } from "vue";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, desc } from "firebase/firestore";
 import {db} from "../firebase/config"
 let getPosts = () => {
     let posts = ref([]);
@@ -7,7 +7,7 @@ let getPosts = () => {
     let load = async () => {
       try {
         const postsCollection = collection(db, "posts");
-        const snapshot = await getDocs(postsCollection);
+        const snapshot = await getDocs(query(postsCollection, orderBy("created_at", desc)));
         posts.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         console.log(posts);
         // let resp = await db.collection("posts").get();

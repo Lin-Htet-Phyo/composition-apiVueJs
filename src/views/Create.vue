@@ -1,5 +1,5 @@
 <template>
-  <form @click.prevent="addPost">
+  <form>
     <label>Title</label>
     <input type="text" required v-model="title" />
     <label>Body</label>
@@ -9,50 +9,56 @@
     <div v-for="tag in tags" :key="tag" class="pill">
       {{ tag }}
     </div>
-    <button>Add Post</button>
+    <button @click.prevent="addPost">Add Post</button>
   </form>
 </template>
 
 <script>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { collection, addDoc } from "firebase/firestore";
-import {db} from "../firebase/config"
+import { ref, onUnmounted } from "vue";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 export default {
   setup() {
-    let router = useRouter();
     let title = ref("");
     let body = ref("");
     let tag = ref("");
     let tags = ref([]);
+    let isSubmitting = ref(false); // ✅ Prevent multiple submissions
+
     let handleKeydown = () => {
       if (!tags.value.includes(tag.value)) {
         tags.value.push(tag.value);
       }
       tag.value = "";
     };
+
     let addPost = async () => {
+      if (isSubmitting.value) return; // ✅ Prevent duplicate submission
+      isSubmitting.value = true;
+
       let newPost = {
         title: title.value,
         body: body.value,
         tags: tags.value,
+        created_at: serverTimestamp(),
       };
-      let resp = await addDoc(collection(db, "posts"), newPost);
-      console.log(resp);
-      // await fetch("http://localhost:3000/posts/", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     title: title.value,
-      //     body: body.value,
-      //     tags: tags.value,
-      //   }),
-      // });
-      // router.push("/");
+
+      try {
+        await addDoc(collection(db, "posts"), newPost);
+        console.log("Post added successfully");
+      } catch (error) {
+        console.error("Error adding post:", error);
+      } finally {
+        isSubmitting.value = false;
+      }
     };
+
+    // ✅ Cleanup function to prevent duplicate calls
+    onUnmounted(() => {
+      isSubmitting.value = false;
+    });
+
     return {
       title,
       body,
